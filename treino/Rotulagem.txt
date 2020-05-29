@@ -1,0 +1,19 @@
+Amostras a serem rotuladas
+
+Folder AF_02_B
+
+Imagem          Rotulos
+               Poro      Rocha     Argila
+FOTO0004        X	   	     X
+FOTO0005        X	   	     X
+FOTO0010        X	   	     X
+FOTO0011        X	   	     X
+FOTO0012        X	   	     X
+FOTO0016        X	   	     X
+FOTO0017        X	   	     X
+FOTO0022        X	   	     X
+FOTO0031        X	   	     X
+FOTO0032        X	   	     X
+FOTO0046        X	   	     X
+FOTO0047        X	   	     X
+FOTO0050        X	   	     X
