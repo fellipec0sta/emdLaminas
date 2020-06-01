@@ -78,7 +78,7 @@ void readPatche(){
   				sig.at< float>( j, 3) = atoi(output.c_str());
 			}
 
-			necroseLiquefacaoPatches.push_back(sig);	
+			argilaPatches.push_back(sig);	
 		}
 	}
 
@@ -118,7 +118,7 @@ void readPatche(){
 				sig.at< float>( j, 3) = atoi(output.c_str());
 			}
 
-			necroseCoagulacaoPatches.push_back(sig);			
+			rochaPatches.push_back(sig);			
 		}
 	}
 
@@ -156,7 +156,7 @@ void readPatche(){
 				sig.at< float>( j, 3) = atoi(output.c_str());
 			}
 
-			granulacaoExuberantePatches.push_back(sig);
+			poroPatches.push_back(sig);
 
 			
 		}
@@ -281,8 +281,8 @@ void classificationAndCalcs(Mat imgO, Mat imgLAB, int size, string arg){
 				val = INT_MAX;
 				pos = 10;		
 				
-				for(int i = 0; i < necroseLiquefacaoPatches.size(); i++){
-					val2 = comparePatchEMD(patchAux, necroseLiquefacaoPatches[i]);
+				for(int i = 0; i < argilaPatches.size(); i++){
+					val2 = comparePatchEMD(patchAux, argilaPatches[i]);
 					
 					if(val2 < val ){
 						val = val2;
@@ -290,8 +290,8 @@ void classificationAndCalcs(Mat imgO, Mat imgLAB, int size, string arg){
 					}
 				}
 
-				for(int i = 0; i < necroseCoagulacaoPatches.size(); i++){
-					val2 = comparePatchEMD(patchAux, necroseCoagulacaoPatches[i]);
+				for(int i = 0; i < rochaPatches.size(); i++){
+					val2 = comparePatchEMD(patchAux, rochaPatches[i]);
 					
 					if(val2 < val ){
 						val = val2;
@@ -299,8 +299,8 @@ void classificationAndCalcs(Mat imgO, Mat imgLAB, int size, string arg){
 					}
 				}
 
-				for(int i = 0; i < granulacaoExuberantePatches.size(); i++){
-					val2 = comparePatchEMD(patchAux, granulacaoExuberantePatches[i]);
+				for(int i = 0; i < poroPatches.size(); i++){
+					val2 = comparePatchEMD(patchAux, poroPatches[i]);
 					
 					if(val2 < val ){
 						val = val2;
@@ -320,69 +320,38 @@ void classificationAndCalcs(Mat imgO, Mat imgLAB, int size, string arg){
 						}
 						else*/
 						if(pos == 1){
-							imgO2.at<Vec3b>(yy, xx).val[0] = necroseLiquefacao[0];
-							imgO2.at<Vec3b>(yy, xx).val[1] = necroseLiquefacao[1] ;
-							imgO2.at<Vec3b>(yy, xx).val[2] = necroseLiquefacao[2]  ;
+							imgO2.at<Vec3b>(yy, xx).val[0] = argila[0];
+							imgO2.at<Vec3b>(yy, xx).val[1] = argila[1] ;
+							imgO2.at<Vec3b>(yy, xx).val[2] = argila[2]  ;
 						} 
 
 						else
 						if(pos == 2){
-							imgO2.at<Vec3b>(yy, xx).val[0] = necroseCoagulacao[0];
-							imgO2.at<Vec3b>(yy, xx).val[1] = necroseCoagulacao[1];
-							imgO2.at<Vec3b>(yy, xx).val[2] = necroseCoagulacao[2];
+							imgO2.at<Vec3b>(yy, xx).val[0] = rocha[0];
+							imgO2.at<Vec3b>(yy, xx).val[1] = rocha[1];
+							imgO2.at<Vec3b>(yy, xx).val[2] = rocha[2];
 						} 
 						else
 						if(pos == 3){
-							imgO2.at<Vec3b>(yy, xx).val[0] = granulacaoExuberante[0];
-							imgO2.at<Vec3b>(yy, xx).val[1] = granulacaoExuberante[1];
-							imgO2.at<Vec3b>(yy, xx).val[2] = granulacaoExuberante[2];
+							imgO2.at<Vec3b>(yy, xx).val[0] = poro[0];
+							imgO2.at<Vec3b>(yy, xx).val[1] = poro[1];
+							imgO2.at<Vec3b>(yy, xx).val[2] = poro[2];
 						} 
-						else
-						if(pos == 4){
-							imgO2.at<Vec3b>(yy, xx).val[0] = granulacaoPalida[0];
-							imgO2.at<Vec3b>(yy, xx).val[1] = granulacaoPalida[1];
-							imgO2.at<Vec3b>(yy, xx).val[2] = granulacaoPalida[2];
-						} 
-						else
-						if(pos == 5){
-							imgO2.at<Vec3b>(yy, xx).val[0] = granulacaoRubra[0];
-							imgO2.at<Vec3b>(yy, xx).val[1] = granulacaoRubra[1];
-							imgO2.at<Vec3b>(yy, xx).val[2] = granulacaoRubra[2];
-						} 
-						else
-						if(pos == 6){
-							imgO2.at<Vec3b>(yy, xx).val[0] = exposicaoTendao[0];
-							imgO2.at<Vec3b>(yy, xx).val[1] = exposicaoTendao[1];
-							imgO2.at<Vec3b>(yy, xx).val[2] = exposicaoTendao[2];
-						} 
-						else
-						if(pos == 7) {
-							imgO2.at<Vec3b>(yy, xx).val[0] = exposicaoOsso[0];
-							imgO2.at<Vec3b>(yy, xx).val[1] = exposicaoOsso[1];
-							imgO2.at<Vec3b>(yy, xx).val[2] = exposicaoOsso[2];
-						}
-						else
-						if(pos == 8){
-							imgO2.at<Vec3b>(yy, xx).val[0] = fibrina[0];		
-							imgO2.at<Vec3b>(yy, xx).val[1] = fibrina[1];
-							imgO2.at<Vec3b>(yy, xx).val[2] = fibrina[2];
-						} 
+						/*
 						else{
 							imgO2.at<Vec3b>(yy, xx).val[0] = 100;		
 							imgO2.at<Vec3b>(yy, xx).val[1] = 0;
 							imgO2.at<Vec3b>(yy, xx).val[2] = 100;
-						}
+						}*/
 					}
 				}
 			}	
 		}
 
 	}
-
-    for (int y = 0; y < imgO.rows; y++)
-    {
-        for (int x = 0; x < imgO.cols; x++)
-        {
+	/*
+    for (int y = 0; y < imgO.rows; y++){
+        for (int x = 0; x < imgO.cols; x++){
      		
      		if (imgO.at<Vec3b>(y, x).val[0] == 0 && imgO.at<Vec3b>(y, x).val[1] == 0 && imgO.at<Vec3b>(y, x).val[2] == 0){
      			imgO2.at<Vec3b>(y, x).val[0] = 100;
@@ -390,130 +359,11 @@ void classificationAndCalcs(Mat imgO, Mat imgLAB, int size, string arg){
 				imgO2.at<Vec3b>(y, x).val[2] = 100;
 			}
         }
-    }   
+    }*/   
 
  	end = clock();
 
  	cout << double(end - tempo) / CLOCKS_PER_SEC << endl;
-
-	src = imgO2;
-
-  	float tpG = 0;
-  	float tnG = 0;
-  	float fpG = 0;
-  	float fnG = 0;
-
-  	float tpN = 0;
-  	float tnN = 0;
-  	float fpN = 0;
-  	float fnN = 0;
-
-  	float tpS = 0;
-  	float tnS = 0;
-  	float fpS = 0;
-  	float fnS = 0;
-
-  	for (int y = 0; y < srcGD.rows; y++)
-  	{
-    	for (int x = 0; x < srcGD .cols; x++)
-    	{
-
-    		Vec3b intensityGD = srcGD.at<Vec3b>(y, x);
-    		Vec3b intensity = src.at<Vec3b>(y, x);
-
-    		if ((intensityGD.val[0] == necroseLiquefacao[0] && intensityGD.val[1] == necroseLiquefacao[1] && intensityGD.val[2] == necroseLiquefacao[2])){
-        		if ((intensity.val[0] == necroseLiquefacao[0] && intensity.val[1] == necroseLiquefacao[1] && intensity.val[2] == necroseLiquefacao[2]) ){
-	          		tpS++;
-    	      		tnN++;
-        	  		tnG++;
-        		}	
-        		else{
-          		
-          			fnS++;
-          		
-          			if (intensity.val[0] == necroseCoagulacao[0] && intensity.val[1] == necroseCoagulacao[1] && intensity.val[2] == necroseCoagulacao[2]){
-          				fpN++;
-          				tnG++;
-    				}
-
-    				if (intensity.val[0] == granulacaoExuberante[0] && intensity.val[1] == granulacaoExuberante[1] && intensity.val[2] == granulacaoExuberante[2]){
-	    				fpG++;
-    					tnN++;
-    				}
-    			}
-    		}
-    		else
-      			if (intensityGD.val[0] == necroseCoagulacao[0] && intensityGD.val[1] == necroseCoagulacao[1] && intensityGD.val[2] == necroseCoagulacao[2]){
-        			if (intensity.val[0] == necroseCoagulacao[0] && intensity.val[1] == necroseCoagulacao[1] && intensity.val[2] == necroseCoagulacao[2]){
-          				tpN++;
-          				tnS++;
-          				tnG++;
-        			}
-        			else{
-          		
-          				fnN++;
-		
-						if (intensity.val[0] == granulacaoExuberante[0] && intensity.val[1] == granulacaoExuberante[1] && intensity.val[2] == granulacaoExuberante[2]){
-    						fpG++;
-    						tnS++;
-    					}
-
-    					if ((intensity.val[0] == necroseLiquefacao[0] && intensity.val[1] == necroseLiquefacao[1] + 105 && intensity.val[2] == necroseLiquefacao[2] + 150) ){
-    						fpS++;
-    						tnG++;
-    					}
-        			}
-      			}
-      		else
-		      	if ((intensityGD.val[0] == granulacaoExuberante[0] && intensityGD.val[1] == granulacaoExuberante[1] && intensityGD.val[2] == granulacaoExuberante[2])){
-		        	if (intensity.val[0] == granulacaoExuberante[0] && intensity.val[1] == granulacaoExuberante[1] && intensity.val[2] == granulacaoExuberante[2]){
-		          		tpG++;
-		          		tnN++;
-		          		tnS++;
-		        	}
-		        	else{
-		          			
-		          		fnG++;
-
-		          		if ((intensity.val[0] == necroseLiquefacao[0] && intensity.val[1] == necroseLiquefacao[1] + 105 && intensity.val[2] == necroseLiquefacao[2] + 150) ){
-		    				fpS++;
-		    				tnN++;
-		    			}
-
-		    			if (intensity.val[0] == necroseCoagulacao[0] && intensity.val[1] == necroseCoagulacao[1] && intensity.val[2] == necroseCoagulacao[2]){
-		          			fpN++;
-		          			tnS++;
-		    			}
-		        	}
-		      	}
-		}
-  	}
-      
-  	cout << (tpG + tnG)/(tpG + fpG + tnG + fnG) << "	";
-  	cout << (tnG)/(fpG + tnG) << "	";
-  	cout << (tpG)/(tpG + fnG) << "	";
-  	cout << (2*tpG)/(2*tpG +fpG + fnG) << "	" << "	";
-
-  	cout << (tpN + tnN)/(tpN + fpN + tnN + fnN) << "	";
-  	cout << (tnN)/(fpN + tnN) << "	";
-  	cout << (tpN)/(tpN + fnN) << "	";
-  	cout << (2*tpN)/(2*tpN +fpN + fnN) << "	" << "	";
-
-  	cout << (tpS + tnS)/(tpS + fnS + tnS + fnS) << "	";
-  	cout << (tnS)/(fpS + tnS) << "	";
-  	cout << (tpS)/(tpS + fnS) << "	";
-  	cout <<  (2*tpS)/(2*tpS +fpS + fnS) << "	" << "	";
-
-
-  	float tp = tpG + tpN + tpS;
-  	float tn = tnG + tnN + tnS;
-  	float fp = fpG + fpN + fpS;
-  	float fn = fnG + fnN + fnS;
-
-  	cout << (tp + tn)/(tp + fp + tn + fn) << "	";
-  	cout << (tn)/(fp + tn) << "	";
-  	cout << (tp)/(tp + fn) << "	";
-  	cout <<  (2*tp)/(2*tp +fp + fn) << "	" << "	";
 
 	//cv::imwrite("imagens/_" + arg,imgO2);
 }
