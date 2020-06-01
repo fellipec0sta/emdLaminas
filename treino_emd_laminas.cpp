@@ -54,9 +54,9 @@ void saveDataPatcheinFile(vector<Mat> patch, string fileName){
 * Funcao para salvar os dados de todos os patches
 **/
 void savePatchesClasses(){		
-	saveDataPatcheinFile(argilaPatches, "treinoPatches/argila.txt");	
-	saveDataPatcheinFile(rochaPatches, "treinoPatches/rocha.txt");
-	saveDataPatcheinFile(poroPatches, "treinoPatches/poro.txt");
+	saveDataPatcheinFile(argilaPatches, "treino/argila.txt");	
+	saveDataPatcheinFile(rochaPatches, "treino/rocha.txt");
+	saveDataPatcheinFile(poroPatches, "treino/poro.txt");
 }
 
 /*
